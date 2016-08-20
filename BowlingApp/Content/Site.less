@@ -1,0 +1,161 @@
+﻿//
+// Variables
+//
+
+@btn-height: 23px;
+@btn-forground-color: #fff;
+@btn-font-wight: 400;
+@btn-border-color: #53a553;
+@btn-background-color: #5cb85c;
+@full-width: 100%;
+
+//
+//Mixins
+//
+
+.border-radius (@radius: 3px) {
+	-webkit-border-radius: @radius;
+	-moz-border-radius:    @radius;
+	border-radius:         @radius;
+}
+
+.border-box (@border-box: border-box){
+    -moz-box-sizing: @border-box;
+    -webkit-box-sizing: @border-box;
+    box-sizing: @border-box;
+}
+
+//
+//
+//
+
+html, body {
+    height: 100%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+body {
+   padding-top: 50px;
+   padding-bottom: 20px;
+}
+
+input {
+    clear: both;
+    margin-bottom: 0.625em;
+    margin-top: 0.312em;
+
+    &[type="text"],
+    &[type="number"]{
+         border: 1px solid #ccc;
+        .border-radius();
+        margin: 0 0 15px 0;
+    }
+    
+    &:focus{
+        outline-width: 0;
+    }
+}
+   
+label {
+    display: block;
+    clear: both;
+}
+
+
+
+//
+//
+//
+.ng-invalid.ng-dirty {
+    border-color: #fa787e;
+}
+.ng-valid.ng-dirty {
+    border-color: #78fa89;
+}
+
+.btn{
+    display: inline-block;
+    font-weight: @btn-font-wight;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none !important;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    height: @btn-height;
+    .border-radius();
+    .border-box;
+    color: @btn-forground-color !important;
+    background-color: @btn-background-color;
+    border-color: @btn-border-color;
+}
+
+.tile {
+    background: #fbfbfb;
+    border: 1px solid #eee;
+    .border-radius(7px);
+    margin-bottom: 0.625em;
+    overflow: hidden;
+    padding: 0.625em;
+    display: block;
+    cursor: default !important;
+    line-height: 1.5em;
+    height: auto !important;
+}
+
+.container {
+    width: 73.125em;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.span {
+    float: left;
+    position: relative;
+    padding-left: 0.625em;
+    padding-right: 0.625em;
+    overflow: hidden;
+    margin-bottom: 1.250em;
+}
+
+.col-15 {
+    width: 15%;
+}
+
+.col-25 {
+    width: 25%;
+}
+
+.col-33 {
+    width: 33.3333%;
+}
+
+.col-50 {
+    width: 50%;
+}
+
+.col-66 {
+    width: 66.6666%;
+}
+
+.col-100 {
+    width: @full-width;
+}
+
+.full-width {
+    width: @full-width;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right !important;
+}
+
+.clear-both {
+    clear: both;
+}
+

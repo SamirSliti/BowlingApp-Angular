@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title ng-bind=""></title>
+    @Styles.Render("~/Content/less")
+</head>
+<body class="container" ng-controller="BowlingController as bowlingCtrl">
+    
+    <div class="col-15 span">
+        <form name="frameCtrl.form.frameForm" ng-controller="FrameController as frameCtrl" ng-submit="(frameCtrl.form.frameForm.$valid && frameCtrl.addFrame(bowlingCtrl.scoreBoard) && bowlingCtrl.scoreBoard.currentFrame <= 10)" novalidate >
+            <ul class="tile">
+                <li>
+                    <label>Frame {{bowlingCtrl.scoreBoard.currentFrame}}</label>
+                </li>
+                <li>
+                    <label>First</label> 
+                    <input name="first" class="full-width" type="text" ng-model="frameCtrl.frameResult.first" required />
+                </li>
+                <li>
+                    <label>Second</label> 
+                    <input name="second" class="full-width" type="text" ng-model="frameCtrl.frameResult.second" />
+                </li>
+                <li ng-show="frameCtrl.showThirdInput(bowlingCtrl.scoreBoard.currentFrame)">
+                    <label>Third</label>
+                    <input name="third" class="full-width" type="text" ng-model="frameCtrl.frameResult.third" />
+                </li>
+                <li>
+                    <input type="submit" min="0" max="10" value="Submit" class="btn right">
+                </li>
+            </ul>
+        </form>
+    </div>
+    
+    <div class="col-66">
+        <ul class="tile">
+        <li ng-repeat="frames in bowlingCtrl.scoreBoard.frames.frames">
+            <div>
+                Frame {{bowlingCtrl.scoreBoard.frames.frames.indexOf(frames) + 1}}
+            </div>
+            <div>
+                {{ frames.first }} {{ frames.second === undefined ? "0" : frames.second }} {{ frames.third }}
+            </div>
+        </li>
+        <li>
+            <h3>Total Score: {{bowlingCtrl.scoreBoard.score}}</h3>
+        </li>
+        </ul>
+    </div>
+    
+    @Scripts.Render("~/bundles/Angular", "~/bundles/App", "~/bundles/Bowling", "~/bundles/Frame")
+</body>
+</html>
